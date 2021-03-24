@@ -1,4 +1,4 @@
-package com.example.finalproject.presentation.fragment.home
+package com.example.finalproject.presentation.fragment.list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,18 +6,18 @@ import com.example.finalproject.base.BaseExtraData
 import com.example.finalproject.base.BaseFragment
 import com.example.finalproject.databinding.FragmentHomeUserBinding
 
-class HomeUserFragment : BaseFragment<HomeUserState, HomeUserViewModel, FragmentHomeUserBinding>() {
+class ListQuoteFragment : BaseFragment<ListQuoteState, ListQuoteViewModel, FragmentHomeUserBinding>() {
 
-    override val viewModelClass: Class<HomeUserViewModel> = HomeUserViewModel::class.java
+    override val viewModelClass: Class<ListQuoteViewModel> = ListQuoteViewModel::class.java
 
     override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentHomeUserBinding = FragmentHomeUserBinding::inflate
 
-    override fun setupView(viewModel: HomeUserViewModel) {
+    override fun setupView(viewModel: ListQuoteViewModel) {
 
     }
 
-    override fun onNormal(data: HomeUserState) {
-
+    override fun onNormal(data: ListQuoteState) {
+        binding.textExample.text = data.quoteList.toString()
     }
 
     override fun onLoading(dataLoading: BaseExtraData?) {
