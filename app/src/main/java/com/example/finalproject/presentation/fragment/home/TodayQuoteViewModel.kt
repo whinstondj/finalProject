@@ -7,17 +7,14 @@ class TodayQuoteViewModel: BaseViewModel<TodayQuoteState>() {
     override val defaultState: TodayQuoteState = TodayQuoteState()
 
     override fun onStartFirstTime() {
-        requestInformation()
+
     }
 
-    private fun requestInformation() {
+    fun requestInformation() {
         updateToLoadingState()
             checkDataState { state ->
             executeCoroutines({
-
-                val response = QuoteRepository().getTodayQuote()
-                updateToNormalState(state.copy(quote = response))
-
+                updateToNormalState(state.copy(quote = QuoteRepository().getTodayQuote(), quoteRandom = QuoteRepository().getRandomQuote()))
             }, {error ->
 
                 updateToErrorState(error)

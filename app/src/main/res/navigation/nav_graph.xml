@@ -13,7 +13,7 @@
     <fragment
         android:id="@+id/todayQuoteFragment"
         android:name="com.example.finalproject.presentation.fragment.home.TodayQuoteFragment"
-        android:label="TodayQuoteFragment"
+        android:label="Aplicacion de citas Inspiradoras"
         tools:layout="@layout/fragment_today_quote">
         <action
             android:id="@+id/action_todayQuoteFragment_to_homeUserFragment"

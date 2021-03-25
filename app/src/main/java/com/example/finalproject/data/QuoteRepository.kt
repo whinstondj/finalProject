@@ -11,5 +11,7 @@ class QuoteRepository {
     suspend fun getTodayQuote(): List<ResponseQuoteDataModelItem> {
         return QuoteNetwork().getTodayQuote()
     }
-
+    suspend fun getRandomQuote(): List<ResponseQuoteDataModelItem> {
+        return QuoteNetwork().getRandomQuote()
+    }
 }

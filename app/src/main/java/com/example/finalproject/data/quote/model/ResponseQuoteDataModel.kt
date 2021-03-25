@@ -1,3 +1,9 @@
 package com.example.finalproject.data.quote.model
 
-data class ResponseQuoteDataModel()
+class ResponseQuoteDataModel : ArrayList<ResponseQuoteDataModelItem>()
+
+data class ResponseQuoteDataModelItem(
+    val a: String,
+    val h: String,
+    val q: String
+)
