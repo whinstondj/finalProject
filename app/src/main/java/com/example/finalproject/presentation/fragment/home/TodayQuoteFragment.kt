@@ -2,13 +2,14 @@ package com.example.finalproject.presentation.fragment.home
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.example.finalproject.R
+import androidx.navigation.fragment.findNavController
 import com.example.finalproject.base.BaseExtraData
 import com.example.finalproject.base.BaseFragment
 import com.example.finalproject.databinding.FragmentQuoteBinding
-import com.example.finalproject.databinding.FragmentTodayQuoteBinding
 import com.google.android.material.tabs.TabLayoutMediator
+import org.koin.core.component.KoinApiExtension
 
+@KoinApiExtension
 class TodayQuoteFragment : BaseFragment<TodayQuoteState, TodayQuoteViewModel, FragmentQuoteBinding>() {
 
     override val viewModelClass: Class<TodayQuoteViewModel> = TodayQuoteViewModel::class.java
@@ -21,7 +22,13 @@ class TodayQuoteFragment : BaseFragment<TodayQuoteState, TodayQuoteViewModel, Fr
     override fun setupView(viewModel: TodayQuoteViewModel) {
         myViewModel = viewModel
 
-        myViewModel.requestInformation()
+        setupButton()
+    }
+
+    private fun setupButton() {
+        binding.seeMoreButton.setOnClickListener {
+            findNavController().navigate(TodayQuoteFragmentDirections.actionTodayQuoteFragmentToHomeUserFragment())
+        }
     }
 
     override fun onNormal(data: TodayQuoteState) {

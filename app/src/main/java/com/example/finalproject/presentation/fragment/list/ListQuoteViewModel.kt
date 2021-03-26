@@ -1,10 +1,16 @@
 package com.example.finalproject.presentation.fragment.list
 
 import com.example.finalproject.base.BaseViewModel
-import com.example.finalproject.data.QuoteRepository
+import com.example.finalproject.domain.repository.QuoteRepository
+import org.koin.core.component.KoinApiExtension
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
-class ListQuoteViewModel: BaseViewModel<ListQuoteState>() {
+@KoinApiExtension
+class ListQuoteViewModel: BaseViewModel<ListQuoteState>(), KoinComponent {
     override val defaultState: ListQuoteState = ListQuoteState()
+
+    private val repository by inject<QuoteRepository>()
 
     override fun onStartFirstTime() {
         requestInformation()
@@ -15,7 +21,7 @@ class ListQuoteViewModel: BaseViewModel<ListQuoteState>() {
 
         checkDataState { state ->
             executeCoroutines({
-                val response = QuoteRepository().getFiftyQuotes()
+                val response = repository.getFiftyQuotes()
                 updateToNormalState(state.copy(quoteList = response))
             }, {error ->
                 updateToErrorState(error)
