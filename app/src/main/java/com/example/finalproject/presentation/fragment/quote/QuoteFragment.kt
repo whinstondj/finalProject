@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.finalproject.data.quote.model.ResponseQuoteDataModelItem
 import com.example.finalproject.databinding.FragmentTodayQuoteBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class QuoteFragment(private val quote: List<ResponseQuoteDataModelItem>) : Fragment() {
 
     lateinit var binding: FragmentTodayQuoteBinding

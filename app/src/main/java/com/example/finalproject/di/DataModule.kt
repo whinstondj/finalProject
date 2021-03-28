@@ -7,24 +7,35 @@ import com.example.finalproject.data.quote.repository.QuoteRepositoryImpl
 import com.example.finalproject.data.quote.repository.network.QuoteNetwork
 import com.example.finalproject.data.quote.repository.network.QuoteService
 import com.example.finalproject.domain.repository.QuoteRepository
-import org.koin.android.ext.koin.androidContext
-import org.koin.dsl.module
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 
-val dataModule = module {
-    factory {
-        provideQuoteRepository(get())
-    }
+@Module
+@InstallIn(SingletonComponent::class)
 
-    single {
-        provideRetrofit(androidContext())
-    }
+object DataModule {
+    @Provides
+    fun provideQuoteRepository (retrofit: QuoteRetrofit): QuoteRepository = QuoteRepositoryImpl(
+        QuoteNetwork(retrofit.loadRetrofit().create(QuoteService::class.java))
+    )
 }
+//val dataModule = module {
+//    factory {
+//        provideQuoteRepository(get())
+//    }
 
-fun provideRetrofit(context: Context):Retrofit {
-    return QuoteRetrofit(NetworkManager(context)).loadRetrofit()
+//    single {
+//        provideRetrofit(androidContext())
+//    }
+//}
 
-}
+//fun provideRetrofit(context: Context):Retrofit {
+//    return QuoteRetrofit(NetworkManager(context)).loadRetrofit()
+
+//}
 
 fun provideQuoteRepository(retrofit: Retrofit): QuoteRepository {
     return QuoteRepositoryImpl(QuoteNetwork(retrofit.create(QuoteService::class.java)))

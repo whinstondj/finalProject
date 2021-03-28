@@ -7,10 +7,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.finalproject.base.BaseExtraData
 import com.example.finalproject.base.BaseFragment
 import com.example.finalproject.databinding.FragmentFiftyQuotesBinding
-import org.koin.core.component.KoinApiExtension
+import dagger.hilt.android.AndroidEntryPoint
 
 
-@KoinApiExtension
+@AndroidEntryPoint
 class ListQuoteFragment : BaseFragment<ListQuoteState, ListQuoteViewModel, FragmentFiftyQuotesBinding>() {
 
     override val viewModelClass: Class<ListQuoteViewModel> = ListQuoteViewModel::class.java

@@ -2,8 +2,8 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
     id 'androidx.navigation.safeargs.kotlin'
-    id 'koin'
 }
 
 android {
@@ -63,13 +63,13 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.12.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
 
-    // Koin for Kotlin
-    implementation "org.koin:koin-core:2.2.2"
-    implementation "org.koin:koin-core-ext:2.2.2"
-    testImplementation "org.koin:koin-test:2.2.2"
-    implementation "org.koin:koin-androidx-scope:2.2.2"
-    implementation "org.koin:koin-androidx-viewmodel:2.2.2"
-    implementation "org.koin:koin-androidx-fragment:2.2.2"
-    implementation "org.koin:koin-androidx-ext:2.2.2"
+    // Dagger Hilt
+    implementation "com.google.dagger:hilt-android:2.33-beta"
+    kapt "com.google.dagger:hilt-compiler:2.33-beta"
 
+    // Room library
+    implementation "androidx.room:room-runtime:2.2.6"
+    kapt "androidx.room:room-compiler:2.2.6"
+    implementation "androidx.room:room-ktx:2.2.6"
+    testImplementation "androidx.room:room-testing:2.2.6"
 }

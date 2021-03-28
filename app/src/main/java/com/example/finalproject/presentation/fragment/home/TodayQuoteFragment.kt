@@ -7,9 +7,10 @@ import com.example.finalproject.base.BaseExtraData
 import com.example.finalproject.base.BaseFragment
 import com.example.finalproject.databinding.FragmentQuoteBinding
 import com.google.android.material.tabs.TabLayoutMediator
-import org.koin.core.component.KoinApiExtension
+import dagger.hilt.android.AndroidEntryPoint
 
-@KoinApiExtension
+
+@AndroidEntryPoint
 class TodayQuoteFragment : BaseFragment<TodayQuoteState, TodayQuoteViewModel, FragmentQuoteBinding>() {
 
     override val viewModelClass: Class<TodayQuoteViewModel> = TodayQuoteViewModel::class.java

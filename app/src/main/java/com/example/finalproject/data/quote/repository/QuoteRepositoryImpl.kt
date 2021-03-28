@@ -3,8 +3,9 @@ package com.example.finalproject.data.quote.repository
 import com.example.finalproject.data.quote.repository.network.QuoteNetwork
 import com.example.finalproject.data.quote.model.ResponseQuoteDataModelItem
 import com.example.finalproject.domain.repository.QuoteRepository
+import javax.inject.Inject
 
-class QuoteRepositoryImpl(private val network: QuoteNetwork): QuoteRepository {
+class QuoteRepositoryImpl @Inject constructor(private val network: QuoteNetwork): QuoteRepository {
 
     override suspend fun getFiftyQuotes(): List<ResponseQuoteDataModelItem> {
         return network.getFiftyQuotes()

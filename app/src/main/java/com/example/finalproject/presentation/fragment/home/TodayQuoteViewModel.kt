@@ -2,14 +2,12 @@ package com.example.finalproject.presentation.fragment.home
 
 import com.example.finalproject.base.BaseViewModel
 import com.example.finalproject.domain.repository.QuoteRepository
-import org.koin.core.component.KoinApiExtension
-import org.koin.core.component.KoinComponent
-import org.koin.core.component.inject
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-@KoinApiExtension
-class TodayQuoteViewModel: BaseViewModel<TodayQuoteState>(), KoinComponent {
 
-    private val repository by inject<QuoteRepository>()
+@HiltViewModel
+class TodayQuoteViewModel @Inject constructor(private val repository: QuoteRepository): BaseViewModel<TodayQuoteState>(){
 
     override val defaultState: TodayQuoteState = TodayQuoteState()
 

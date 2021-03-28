@@ -9,8 +9,9 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
+import javax.inject.Inject
 
-class QuoteRetrofit(private val networkManager: NetworkManager) {
+class QuoteRetrofit @Inject constructor(private val networkManager: NetworkManager) {
 
     fun loadRetrofit(): Retrofit {
         return Retrofit.Builder()
