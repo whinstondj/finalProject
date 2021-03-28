@@ -2,5 +2,5 @@
     <string name="app_name">Final Project</string>
     <string name="seeMoreButtonText">Ver mas</string>
     <string name="seeSavedButtonText">Ver Guardadas</string>
-    <string name="saveQuoteButtonText">Guardar Cita</string>
+    <string name="saveQuoteButtonText">Guardar Cita de Hoy</string>
 </resources>

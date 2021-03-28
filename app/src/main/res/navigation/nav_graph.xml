@@ -6,17 +6,17 @@
     app:startDestination="@id/todayQuoteFragment">
 
     <fragment
-        android:id="@+id/homeUserFragment"
+        android:id="@+id/fiftyQuoteFragment"
         android:name="com.example.finalproject.presentation.fragment.list.ListQuoteFragment"
-        android:label="HomeUserFragment"
-        tools:layout="@layout/fragment_home_user"/>
+        android:label="Otras Frases de Internet"
+        tools:layout="@layout/fragment_fifty_quotes"/>
     <fragment
         android:id="@+id/todayQuoteFragment"
         android:name="com.example.finalproject.presentation.fragment.home.TodayQuoteFragment"
         android:label="Aplicacion de citas Inspiradoras"
-        tools:layout="@layout/fragment_today_quote">
+        tools:layout="@layout/fragment_quote">
         <action
             android:id="@+id/action_todayQuoteFragment_to_homeUserFragment"
-            app:destination="@id/homeUserFragment" />
+            app:destination="@id/fiftyQuoteFragment" />
     </fragment>
 </navigation>

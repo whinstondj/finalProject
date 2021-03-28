@@ -1,9 +1,8 @@
-package com.example.finalproject.data.config.network
+package com.example.finalproject.data.quote.repository.network
 
 import com.example.finalproject.data.quote.model.ResponseQuoteDataModel
 import com.example.finalproject.data.quote.model.ResponseQuoteDataModelItem
 import retrofit2.http.GET
-import retrofit2.http.Query
 
 interface QuoteService {
 
