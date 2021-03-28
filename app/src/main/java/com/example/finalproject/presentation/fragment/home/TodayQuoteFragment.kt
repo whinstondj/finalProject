@@ -1,11 +1,16 @@
 package com.example.finalproject.presentation.fragment.home
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
+import android.widget.Toast.LENGTH_LONG
 import androidx.navigation.fragment.findNavController
+import com.example.finalproject.R
 import com.example.finalproject.base.BaseExtraData
 import com.example.finalproject.base.BaseFragment
 import com.example.finalproject.databinding.FragmentQuoteBinding
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -19,6 +24,11 @@ class TodayQuoteFragment : BaseFragment<TodayQuoteState, TodayQuoteViewModel, Fr
 
     lateinit var myViewModel: TodayQuoteViewModel
 
+    companion object {
+        const val CODE_ALL_RIGHT = 1000
+    }
+
+    var todayQuote: Boolean = true
 
     override fun setupView(viewModel: TodayQuoteViewModel) {
         myViewModel = viewModel
@@ -29,6 +39,9 @@ class TodayQuoteFragment : BaseFragment<TodayQuoteState, TodayQuoteViewModel, Fr
     private fun setupButton() {
         binding.seeMoreButton.setOnClickListener {
             findNavController().navigate(TodayQuoteFragmentDirections.actionTodayQuoteFragmentToHomeUserFragment())
+        }
+        binding.saveQuoteButton.setOnClickListener {
+            myViewModel.onActionSaveQuote(todayQuote)
         }
     }
 
@@ -41,10 +54,18 @@ class TodayQuoteFragment : BaseFragment<TodayQuoteState, TodayQuoteViewModel, Fr
                 else -> ""
             }
         }.attach()
+
     }
 
     override fun onLoading(dataLoading: BaseExtraData?) {
-
+        dataLoading?.let {
+            when (it.type) {
+                CODE_ALL_RIGHT ->
+                    Toast.makeText(context, "Cita del dia almacenada", Toast.LENGTH_LONG).show()
+                else -> {
+                }
+            }
+        }
     }
 
     override fun onError(dataError: Throwable) {

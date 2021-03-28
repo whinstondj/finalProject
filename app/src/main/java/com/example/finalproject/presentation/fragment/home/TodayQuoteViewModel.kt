@@ -1,7 +1,10 @@
 package com.example.finalproject.presentation.fragment.home
 
+import com.example.finalproject.base.BaseExtraData
 import com.example.finalproject.base.BaseViewModel
+import com.example.finalproject.domain.model.QuoteDomainModel
 import com.example.finalproject.domain.repository.QuoteRepository
+import com.example.finalproject.presentation.fragment.home.TodayQuoteFragment.Companion.CODE_ALL_RIGHT
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -27,4 +30,29 @@ class TodayQuoteViewModel @Inject constructor(private val repository: QuoteRepos
             })
             }
     }
+
+    fun onActionSaveQuote(todayQuote: Boolean) {
+        updateToLoadingState()
+
+        checkDataState { state ->
+            if (state.author != "Nulo") {
+
+                executeCoroutines({
+                        if (todayQuote) {
+                            repository.insertNewQuote(
+                                QuoteDomainModel(
+                                    quote = state.quote[0].q,
+                                    author = state.quote[0].a
+                                )
+                            )
+                            updateToLoadingState(BaseExtraData(CODE_ALL_RIGHT))
+                        }
+                }, {
+
+        })
+
+            }
+        }
+    }
+
 }
