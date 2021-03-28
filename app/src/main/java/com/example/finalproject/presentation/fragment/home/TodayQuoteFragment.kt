@@ -1,16 +1,12 @@
 package com.example.finalproject.presentation.fragment.home
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
-import android.widget.Toast.LENGTH_LONG
 import androidx.navigation.fragment.findNavController
-import com.example.finalproject.R
 import com.example.finalproject.base.BaseExtraData
 import com.example.finalproject.base.BaseFragment
 import com.example.finalproject.databinding.FragmentQuoteBinding
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -28,7 +24,6 @@ class TodayQuoteFragment : BaseFragment<TodayQuoteState, TodayQuoteViewModel, Fr
         const val CODE_ALL_RIGHT = 1000
     }
 
-    var todayQuote: Boolean = true
 
     override fun setupView(viewModel: TodayQuoteViewModel) {
         myViewModel = viewModel
@@ -41,7 +36,10 @@ class TodayQuoteFragment : BaseFragment<TodayQuoteState, TodayQuoteViewModel, Fr
             findNavController().navigate(TodayQuoteFragmentDirections.actionTodayQuoteFragmentToHomeUserFragment())
         }
         binding.saveQuoteButton.setOnClickListener {
-            myViewModel.onActionSaveQuote(todayQuote)
+            myViewModel.onActionSaveQuote()
+        }
+        binding.seeSavedButton.setOnClickListener {
+            findNavController().navigate(TodayQuoteFragmentDirections.actionTodayQuoteFragmentToSavedQuoteFragment())
         }
     }
 
