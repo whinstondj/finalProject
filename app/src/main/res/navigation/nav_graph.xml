@@ -18,5 +18,12 @@
         <action
             android:id="@+id/action_todayQuoteFragment_to_homeUserFragment"
             app:destination="@id/fiftyQuoteFragment" />
+        <action
+            android:id="@+id/action_todayQuoteFragment_to_savedQuoteFragment"
+            app:destination="@id/savedQuoteFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/savedQuoteFragment"
+        android:name="com.example.finalproject.presentation.fragment.saved.SavedQuoteFragment"
+        android:label="Citas Inspiradoras Guardadas" />
 </navigation>

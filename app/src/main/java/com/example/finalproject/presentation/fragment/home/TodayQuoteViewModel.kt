@@ -31,14 +31,13 @@ class TodayQuoteViewModel @Inject constructor(private val repository: QuoteRepos
             }
     }
 
-    fun onActionSaveQuote(todayQuote: Boolean) {
+    fun onActionSaveQuote() {
         updateToLoadingState()
 
         checkDataState { state ->
             if (state.author != "Nulo") {
 
                 executeCoroutines({
-                        if (todayQuote) {
                             repository.insertNewQuote(
                                 QuoteDomainModel(
                                     quote = state.quote[0].q,
@@ -46,7 +45,6 @@ class TodayQuoteViewModel @Inject constructor(private val repository: QuoteRepos
                                 )
                             )
                             updateToLoadingState(BaseExtraData(CODE_ALL_RIGHT))
-                        }
                 }, {
 
         })

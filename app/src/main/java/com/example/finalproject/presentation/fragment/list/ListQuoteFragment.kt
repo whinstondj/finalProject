@@ -1,6 +1,7 @@
 package com.example.finalproject.presentation.fragment.list
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -36,11 +37,12 @@ class ListQuoteFragment : BaseFragment<ListQuoteState, ListQuoteViewModel, Fragm
     }
 
     override fun onNormal(data: ListQuoteState) {
+        binding.fiftyQuoteFragmentProgressBar.visibility = View.GONE
         mAdapter.updateList(data.quoteList)
     }
 
     override fun onLoading(dataLoading: BaseExtraData?) {
-
+        binding.fiftyQuoteFragmentProgressBar.visibility = View.VISIBLE
     }
 
     override fun onError(dataError: Throwable) {
