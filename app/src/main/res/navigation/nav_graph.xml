@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/todayQuoteFragment">
+
+    <fragment
+        android:id="@+id/fiftyQuoteFragment"
+        android:name="com.example.finalproject.presentation.fragment.list.ListQuoteFragment"
+        android:label="Otras Frases de Internet"
+        tools:layout="@layout/fragment_fifty_quotes"/>
+    <fragment
+        android:id="@+id/todayQuoteFragment"
+        android:name="com.example.finalproject.presentation.fragment.home.TodayQuoteFragment"
+        android:label="Aplicacion de citas Inspiradoras"
+        tools:layout="@layout/fragment_quote">
+        <action
+            android:id="@+id/action_todayQuoteFragment_to_homeUserFragment"
+            app:destination="@id/fiftyQuoteFragment" />
+        <action
+            android:id="@+id/action_todayQuoteFragment_to_savedQuoteFragment"
+            app:destination="@id/savedQuoteFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/savedQuoteFragment"
+        android:name="com.example.finalproject.presentation.fragment.saved.SavedQuoteFragment"
+        android:label="Citas Inspiradoras Guardadas" />
+</navigation>
